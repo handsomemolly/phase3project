@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.delete_all
-JobApplication.delete_all
 JobTask.delete_all
+JobApplication.delete_all
+User.delete_all
 
 user1 = User.create(name: 'Ryan Kendig', email: 'ryan.kendig@gmail.com')
 user2 = User.create(name: 'Nhon Dang', email: 'nhon.dang@gmail.com')
