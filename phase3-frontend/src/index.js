@@ -8,22 +8,58 @@ function fetchJobs() {
     })
 }
 
-// Left Pane
+function deleteApp(job_application){
+    fetch(`http://localhost:3000/job_applications/${job_application.id}`,{
+        method: 'DELETE'
+    })
+    .then(res => res.json())
+    .then(() => {
+        let jobApp = document.getElementById(job_application.id)
+        jobApp.remove()
+    })
+}
+
+function completeTask(task) {
+    task.is_complete = true
+    // debugger
+    fetch(`http://localhost:3000/job_tasks/${task.id}`,{
+        method: 'PATCH',
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({is_complete: task.is_complete})
+    })
+    .then(res => res.json())
+    .then(task => {
+        // let oldTask = document.querySelector(`.tasks-list`)
+        // debugger
+        let li = document.getElementById(`${task.job_task_id}`)
+        // debugger
+        li.textContent = `${task.task} done`
+    })
+}
+
+// Left Pane 
 function listJobApps(task) {
     let jobUl = document.querySelector('.job-list') 
     let jobLi = document.createElement('li')
     let lineBreak = document.createElement('br')
-    jobLi.id = task.job_application.id
+    let deleteBtn = document.createElement('button')
+    // jobLi.id = task.job_application.id
     jobLi.textContent = `Company: ${task.job_application.company_name} on ${task.job_application.date}`
+    deleteBtn.textContent = 'x'
 
     let rightPane = document.querySelector('.rightpane')
     rightPane.innerHTML = ""
 
-    jobUl.append(jobLi, lineBreak)
+    jobLi.appendChild(deleteBtn)
+    jobUl.append(jobLi,lineBreak)
 
     // create the delete button for job apps
+    // create new job app button at the top
     
     jobLi.addEventListener('click', () => showJobAndTaskPanel(task))
+    deleteBtn.addEventListener('click', () => deleteApp(task.job_application))
 
 }
 
@@ -39,9 +75,17 @@ function showJobAndTaskPanel(task) {
     let taskLi = document.createElement('li')
     taskLi.id = task.id 
     taskLi.textContent = task.task
-    
+    let completeBtn = document.createElement('button')
+    completeBtn.textContent = 'complete'
+
+
+    taskLi.append(completeBtn)
     taskUl.append(taskLi)
     rightPane.append(taskUl)
+
+    completeBtn.addEventListener('click', () => completeTask(task))
+
+ // make 'complete task' button, and indicate (line through or change task color)   
 
 // Right Pane Render END
 
