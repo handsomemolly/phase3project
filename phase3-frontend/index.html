@@ -11,15 +11,91 @@
 
         <div class="toppane">Welcome to Job Application Tracker</div>
 
-        <div class="leftpane"><ul class="job-list">All Jobs Applied To:</ul></div>
+        <div class="leftpane">
+            <p style="text-align:center">
+                <button id= new-job-button>Create New Job Application</button>
+            </p>
+            <ul class="job-list"></ul>
+        </div>
 
-        <div class="middlepane">Job Panel</div>
+        <div class="middlepane">Dynamic Panel
+            <div class="form-container">
+                <form class="add-new-job-form">
+                  <h3>Create a new Job Application</h3>
+          
+                  <input
+                    type="text"
+                    name="company_name"
+                    value=""
+                    placeholder="Enter a company name..."
+                    class="input-text"
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="date"
+                    value=""
+                    placeholder="Enter a date (MM/DD/YYYY)..."
+                    class="input-text"
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="status"
+                    value=""
+                    placeholder="Enter a job status..."
+                    class="input-text"
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="position"
+                    value=""
+                    placeholder="Enter job position..."
+                    class="input-text"
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="salary"
+                    value=""
+                    placeholder="Enter a job salary..."
+                    class="input-text"
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="requirement"
+                    value=""
+                    placeholder="Enter job requirements..."
+                    class="input-text"
+                  />
+                  <br />
+                  <input
+                    type="text"
+                    name="note"
+                    value=""
+                    placeholder="Enter job notes..."
+                    class="input-text"
+                  />
+                  <br />
+                  <input
+                    type="submit"
+                    name="submit"
+                    value="Create New Job"
+                    class="submit"
+                  />
+                </form>
+            </div>
+         </div>
 
         <div class="rightpane">
             <h3>Task Panel</h3>
         </div>
 
     </div>
+
+    
 
     <script defer src="./src/index.js"></script>
   </body>

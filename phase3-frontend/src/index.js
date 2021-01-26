@@ -1,5 +1,14 @@
 
+// auto functions 
 fetchJobs()
+newJobApp()
+
+// Global variables
+let jobDiv = document.createElement('div-job')
+jobDiv.className = "job-div"
+
+
+
 
 function fetchJobs() {
     fetch('http://localhost:3000/job_tasks')
@@ -16,13 +25,33 @@ function listJobApps(task) {
     jobLi.id = task.job_application.id
     jobLi.textContent = `Company: ${task.job_application.company_name} on ${task.job_application.date}`
 
-    let rightPane = document.querySelector('.rightpane')
-    rightPane.innerHTML = ""
+
 
     jobUl.append(jobLi, lineBreak)
     
     jobLi.addEventListener('click', () => showJobAndTaskPanel(task))
 
+    // left pane will contain the delete job app buttons
+
+}
+
+function newJobApp() {
+    let middlePane = document.querySelector('.middlepane')
+    let showJob = true
+    let newJobBtn = document.getElementById('new-job-button')
+    let formContainer = document.querySelector('.form-container')
+    newJobBtn.addEventListener('click', () => { 
+        console.log(showJob)
+        if (showJob ==! true) {
+            jobDiv.innerHTML = ""
+            formContainer.style.display = 'block'
+            showJob = true
+
+        } else {
+            formContainer.style.display = 'none'
+            showJob = false
+        }
+    })
 }
 
 // Middle and Right Panes
@@ -41,13 +70,17 @@ function showJobAndTaskPanel(task) {
     taskUl.append(taskLi)
     rightPane.append(taskUl)
 
+    // make a button to complete the task, make a function to indicate (line through or change task color)
+
 // Right Pane Render END
 
 // Middle Pane Render BEGIN
+    let jobForm = document.querySelector('.form-container')
+    jobForm.style.display = "none"
 
+    jobDiv.innerHTML = ""
     let showPanel = document.querySelector('.middlepane')
-    showPanel.innerHTML = ""
-    
+   
     let companyName = document.createElement('h2')
     companyName.textContent = `Applied To: ${task.job_application.company_name} on ${task.job_application.date}`
 
@@ -71,7 +104,8 @@ function showJobAndTaskPanel(task) {
     jobTaskBtn.textContent = "Create Task"
     //have to create submit new task function for jobTaskBtn
 
-    showPanel.append(companyName, status, position, salary, requirements, companyNotes, jobTaskBtn)
+    jobDiv.append(companyName, status, position, salary, requirements, companyNotes, jobTaskBtn)
 
-
+    showPanel.append(jobDiv)
+    
 }
