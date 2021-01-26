@@ -3,7 +3,6 @@ class CreateJobApplications < ActiveRecord::Migration[6.1]
     create_table :job_applications do |t|
       t.string :date
       t.string :job_title
-      t.string :company_name
       t.string :status
       t.integer :salary
       t.text :requirements

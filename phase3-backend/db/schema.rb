@@ -10,12 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_26_000954) do
+ActiveRecord::Schema.define(version: 2021_01_26_043336) do
 
   create_table "job_applications", force: :cascade do |t|
     t.string "date"
     t.string "job_title"
-    t.string "company_name"
     t.string "status"
     t.integer "salary"
     t.text "requirements"
@@ -23,6 +22,7 @@ ActiveRecord::Schema.define(version: 2021_01_26_000954) do
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "company_name"
     t.index ["user_id"], name: "index_job_applications_on_user_id"
   end
 
