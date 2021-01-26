@@ -20,6 +20,8 @@ function listJobApps(task) {
     rightPane.innerHTML = ""
 
     jobUl.append(jobLi, lineBreak)
+
+    // create the delete button for job apps
     
     jobLi.addEventListener('click', () => showJobAndTaskPanel(task))
 
@@ -73,5 +75,7 @@ function showJobAndTaskPanel(task) {
 
     showPanel.append(companyName, status, position, salary, requirements, companyNotes, jobTaskBtn)
 
+    //HAVE TO GIT PUSH TO MAIN NOT MASTER
+    // Must fill out backend actions for create and edit in API model controllers before doing frontend methods for it
 
 }
