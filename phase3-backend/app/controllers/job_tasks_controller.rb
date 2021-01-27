@@ -10,7 +10,7 @@ class JobTasksController < ApplicationController
     end 
 
     def create
-        job_task = JobTask.create(is_complete: false, task: job_task.task, job_application_id: params[:job_application][job_application_id].to_i)
+        job_task = JobTask.create(job_task_params)
         render json: job_task
     end
 
@@ -19,6 +19,12 @@ class JobTasksController < ApplicationController
         job_task.update(is_complete: params[:is_complete], task: job_task.task, job_application_id: job_task.job_application_id)
         #job_task.update(is_complete: job_task.is_complete)
         render json: { job_task_id: job_task.id, task: job_task.task }
+    end
+
+    private 
+    
+    def job_task_params
+        params.require(:job_task).permit(:is_complete, :task, :job_application_id)
     end
 
 end
