@@ -2,41 +2,128 @@ body, html {
     width: 100%;
     height: 100%;
     margin: 0;
+    background-image: url("https://static01.nyt.com/images/2018/05/03/us/03spongebob_xp/03spongebob_xp-videoSixteenByNineJumbo1600.jpg")
   }
   
   .container {
-    width: 100%;
-    height: 100%;
+    opacity: 0.95;
+    width: 90%;
+    height: 75%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    position: relative;
+    text-align:center;
   }
-  
+
   .leftpane {
-      width: 25%;
-      height: 100%;
-      float: left;
-      background-color: rosybrown;
-      border-collapse: collapse;
+    width: 25%;
+    height: 100%;
+    flex: 1;
+    border: 2px solid yellow;
+    margin-right: 20px;
+    background-color: rosybrown;
+    border-collapse: collapse;
+    border-radius: 10px;
   }
   
   .middlepane {
-      width: 50%;
-      height: 100%;
-      float: left;
-      background-color: royalblue;
-      border-collapse: collapse;
+    width: 50%;
+    height: 100%;
+    flex: 1;
+    border: 2px solid yellow;
+    margin-right: 20px;
+    background-color: royalblue;
+    border-collapse: collapse;
+    border-radius: 10px;
   }
   
   .rightpane {
     width: 25%;
     height: 100%;
+    flex: 1;
+    border: 2px solid yellow;
     position: relative;
-    float: right;
-    background-color: yellow;
+    background-color: purple;
     border-collapse: collapse;
+    border-radius: 10px;
+    text-align:left;
   }
   
   .toppane {
     width: 100%;
     height: 100px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     border-collapse: collapse;
     background-color: #4da6ff;
+    border-radius: 10px;
+    text-align:center;
+  }
+
+  .joblist {
+    list-style-type: none;
+    padding: 10px; 
+  }
+
+  .job-div {
+    padding: 10px;
+  }
+
+  .delete-button {
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color:rgb(10, 139, 238);
+    text-align:center;
+    transition: all 0.2s;
+  }
+  .delete-button:hover{
+    background-color:red;
+  }
+
+  .complete-button {
+    display:inline-block;
+    padding:0.3em 1.2em;
+    margin:0 0.3em 0.3em 0;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:#FFFFFF;
+    background-color:grey;
+    text-align:center;
+    transition: all 0.2s;
+  }
+
+  .complete-button:hover {
+    background-color: green;
+  }
+
+  #new-job-button {
+    display:inline-block;
+    padding:0.35em 1.2em;
+    border:0.1em solid #FFFFFF;
+    margin:0 0.3em 0.3em 0;
+    border-radius:2em;
+    box-sizing: border-box;
+    text-decoration:none;
+    font-family:'Roboto',sans-serif;
+    font-weight:300;
+    color:grey;
+    text-align:center;
+    transition: all 0.2s;
+  }
+
+  #new-job-button:hover{
+    color:#000000;
+    background-color:#FFFFFF;
   }

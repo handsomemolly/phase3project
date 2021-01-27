@@ -39,7 +39,8 @@ function completeTask(task) {
     .then(res => res.json())
     .then(task => {
         let li = document.getElementById(`${task.job_task_id}`)
-        li.textContent = `${task.task} done`
+        li.textContent = `${task.task}`
+        li.style = "text-decoration: line-through"
     })
 }
 
@@ -71,16 +72,18 @@ function postTask(task) {
 
 // Left Pane 
 function listJobApps(job) {
-    let jobUl = document.querySelector('.job-list') 
+    let jobUl = document.querySelector('.joblist') 
     let jobLi = document.createElement('li')
     jobLi.id = `job-app-${job.id}`
 
     let lineBreak = document.createElement('br')
 
     let deleteBtn = document.createElement('button')
+    deleteBtn.className = "delete-button"
 
     jobLi.textContent = `Company: ${job.company_name} on ${job.date}`
     deleteBtn.textContent = 'x'
+    deleteBtn.style = "margin-left: 8px"
 
     jobLi.appendChild(deleteBtn)
     jobUl.append(jobLi,lineBreak)
@@ -134,19 +137,22 @@ function showJobAndTaskPanel(job) {
     let rightPane = document.querySelector('.rightpane')
     rightPane.innerHTML = ""
     
-    let taskUl = document.createElement('ul')
-    taskUl.className = "tasks-list"
+    let taskOl = document.createElement('ol')
+    taskOl.className = "tasks-list"
     job.job_tasks.forEach(task => {
         let taskLi = document.createElement('li')
         taskLi.id = task.id 
         taskLi.textContent = task.task
-        taskUl.append(taskLi)
+        taskOl.append(taskLi)
 
         if (task.is_complete == true) {
-            taskLi.textContent = `${task.task} done`
+            taskLi.textContent = `${task.task}`
+            taskLi.style = "text-decoration: line-through"
         } else {
             let completeBtn = document.createElement('button')
             completeBtn.textContent = 'complete'
+            completeBtn.className = "complete-button"
+            completeBtn.style = "margin-left: 8px"
             taskLi.append(completeBtn)
             completeBtn.addEventListener('click', () => completeTask(task))
         }
@@ -155,7 +161,7 @@ function showJobAndTaskPanel(job) {
 
     //have to create submit new task function for jobTaskBtn
 
-    rightPane.append(taskUl)
+    rightPane.append(taskOl)
 
 // Right Pane Render END
 
