@@ -42,6 +42,21 @@ function completeTask(task) {
     })
 }
 
+function postJobApp(jobApplication) {
+    fetch('http://localhost:3000/job_applications', {
+        method: "POST", 
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(jobApplication)
+    })
+    .then(resp => resp.json())
+
+     .then(data => console.log(data))
+    // function beneath works as intended. Figure out how to save to database
+    // .then(jobApp => listJobApps(jobApp))
+}
+
 // Left Pane 
 function listJobApps(job) {
     let jobUl = document.querySelector('.job-list') 
@@ -77,6 +92,27 @@ function newJobApp() {
             showJob = false
         }
     })
+
+    let form = formContainer.querySelector('.add-new-job-form')
+    form.addEventListener('submit', handleSubmit)
+    
+}
+
+function handleSubmit(e) {
+    e.preventDefault() 
+    let jobApplication = {
+        date: e.target.date.value,
+        job_title: e.target.position.value,
+        status: e.target.status.value,
+        salary: e.target.salary.value,
+        requirements: e.target.requirement.value,
+        company_notes: e.target.note.value,
+        company_name: e.target.company_name.value,
+        user_id: 11
+        // VERY IMPORTANT! ONCE APP IS COMPLETE, RE-SEED DATA AND CHANGE THE USER_ID ON LINE 111 TO AN EXISTING ONE
+    }
+
+    postJobApp(jobApplication)
 }
 
 // Middle and Right Panes
@@ -138,6 +174,7 @@ function showJobAndTaskPanel(job) {
     let jobTaskBtn = document.createElement('button')
     jobTaskBtn.className = "create-task-button"
     jobTaskBtn.textContent = "Create Task"
+    
     //have to create submit new task function for jobTaskBtn
 
     jobDiv.append(companyName, status, position, salary, requirements, companyNotes, jobTaskBtn)
