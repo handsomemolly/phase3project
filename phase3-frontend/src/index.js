@@ -6,6 +6,7 @@ newJobApp()
 // Global variables
 let jobDiv = document.createElement('div-job')
 jobDiv.className = "job-div"
+jobDiv.style = "text-align:center"
 
 
 function fetchJobs() {
@@ -51,10 +52,8 @@ function postJobApp(jobApplication) {
         body: JSON.stringify(jobApplication)
     })
     .then(resp => resp.json())
-
-     .then(data => console.log(data))
     // function beneath works as intended. Figure out how to save to database
-    // .then(jobApp => listJobApps(jobApp))
+    .then(jobApp => listJobApps(jobApp))
 }
 
 function postTask(task) {
@@ -121,8 +120,8 @@ function handleSubmit(e) {
         requirements: e.target.requirement.value,
         company_notes: e.target.note.value,
         company_name: e.target.company_name.value,
-        user_id: 11
-        // VERY IMPORTANT! ONCE APP IS COMPLETE, RE-SEED DATA AND CHANGE THE USER_ID ON LINE 111 TO AN EXISTING ONE
+        user_id: 13
+        // VERY IMPORTANT! ONCE APP IS COMPLETE, RE-SEED DATA AND CHANGE THE USER_ID ON LINE 122 TO AN EXISTING ONE
     }
 
     postJobApp(jobApplication)
@@ -186,18 +185,39 @@ function showJobAndTaskPanel(job) {
     let companyNotes = document.createElement('p')
     companyNotes.textContent = `Notes: ${job.company_notes}`
 
-    let jobTaskForm = document.querySelector('.add-new-task-form')
-    let jobAppId = job.id
-    jobTaskForm.addEventListener('submit', (e) => {
+    // Create Task Form
+
+    let taskFormDiv = document.createElement('div') 
+    taskFormDiv.style = "text-align:center"
+    let taskForm = document.createElement('form') 
+    taskForm.className = "add-new-task-form"
+    
+    let taskTitle = document.createElement('h4')
+    taskTitle.textContent = "Create New Task"
+
+    let taskInput = document.createElement('input')
+    taskInput.className = "task-input"
+    taskInput.type = "text"
+    taskInput.name = "task"
+    taskInput.placeholder = "Add a task..."
+
+    let taskSubmitBtn = document.createElement('button')
+    taskSubmitBtn.className = "create-task-button"
+    taskSubmitBtn.type = "submit"
+    taskSubmitBtn.textContent = "Create Task"
+
+    taskForm.append(taskTitle, taskInput, taskSubmitBtn)
+
+    taskFormDiv.append(taskForm)
+
+    let jobAppId = job.id 
+    taskForm.addEventListener('submit', (e) => {
         handleTask(e, jobAppId)
     })
     
-    jobDiv.append(companyName, status, position, salary, requirements, companyNotes, jobTaskForm)
-
-    // Must fill out backend actions for create and edit in API model controllers before doing frontend methods for it
+    jobDiv.append(companyName, status, position, salary, requirements, companyNotes, taskFormDiv)
 
     showPanel.append(jobDiv)
-   
 }
 
 function handleTask(e, jobAppId) {
