@@ -105,6 +105,8 @@ function showJobAndTaskPanel(job) {
 
     })
 
+
+
     rightPane.append(taskUl)
 
 // Right Pane Render END
@@ -135,16 +137,26 @@ function showJobAndTaskPanel(job) {
     let companyNotes = document.createElement('p')
     companyNotes.textContent = `Notes: ${job.company_notes}`
 
-    let jobTaskBtn = document.createElement('button')
-    jobTaskBtn.className = "create-task-button"
+    // let jobTaskBtn = document.createElement('button')
+    // jobTaskBtn.className = "create-task-button"
+    let taskContent = document.querySelector('.task-input')
+    taskContent.textContent = `${job.job_task}`
+
+    let jobTaskBtn = document.querySelector('.create-task-button')
     jobTaskBtn.textContent = "Create Task"
     //have to create submit new task function for jobTaskBtn
+    
 
-    jobDiv.append(companyName, status, position, salary, requirements, companyNotes, jobTaskBtn)
+    jobDiv.append(companyName, status, position, salary, requirements, companyNotes)
 
     // Must fill out backend actions for create and edit in API model controllers before doing frontend methods for it
 
     showPanel.append(jobDiv)
+
+    //render new task 
+
+   
+   
 }
 
 

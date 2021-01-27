@@ -9,6 +9,11 @@ class JobTasksController < ApplicationController
         render json: job_task 
     end 
 
+    def create
+        job_task = JobTask.create(is_complete: false, task: task, job_application_id: params[:job_application][job_application_id].to_i)
+        render json: job_task
+    end
+
     def update
         job_task = JobTask.find_by(id: params[:id])
         job_task.update(is_complete: params[:is_complete], task: job_task.task, job_application_id: job_task.job_application_id)
