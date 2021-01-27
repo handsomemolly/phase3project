@@ -10,7 +10,7 @@ class JobTasksController < ApplicationController
     end 
 
     def create
-        job_task = JobTask.create(is_complete: false, task: task, job_application_id: params[:job_application][job_application_id].to_i)
+        job_task = JobTask.create(is_complete: false, task: job_task.task, job_application_id: params[:job_application][job_application_id].to_i)
         render json: job_task
     end
 
