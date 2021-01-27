@@ -6,12 +6,14 @@ class JobTasksController < ApplicationController
 
     def show 
         job_task = JobTask.find_by(id: params[:id])
-        render json: { is_complete: job_task.is_complete, task: job_task.task, job_application_id: job_task.job_application_id } 
+        render json: job_task 
     end 
 
-    def destroy 
+    def update
         job_task = JobTask.find_by(id: params[:id])
-        render json: { is_complete: job_task.is_complete, task: job_task.task, job_application_id: job_task.job_application_id } 
-    end 
+        job_task.update(is_complete: params[:is_complete], task: job_task.task, job_application_id: job_task.job_application_id)
+        #job_task.update(is_complete: job_task.is_complete)
+        render json: { job_task_id: job_task.id, task: job_task.task }
+    end
 
 end

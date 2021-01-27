@@ -6,9 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.delete_all
-JobApplication.delete_all
 JobTask.delete_all
+JobApplication.delete_all
+User.delete_all
 
 user1 = User.create(name: 'Ryan Kendig', email: 'ryan.kendig@gmail.com')
 user2 = User.create(name: 'Nhon Dang', email: 'nhon.dang@gmail.com')
@@ -19,3 +19,4 @@ job_app2 = JobApplication.create(date: '04/10/2021', job_title: 'Software Engine
 
 job_task1 = JobTask.create(is_complete: false, task: 'phone screen', job_application_id: job_app1.id)
 job_task2 = JobTask.create(is_complete: false, task: 'wait for reply', job_application_id: job_app2.id)
+job_task3 = JobTask.create(is_complete: false, task: 'interview on tuesday', job_application_id: job_app1.id)
