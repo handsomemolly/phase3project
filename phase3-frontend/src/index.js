@@ -57,6 +57,19 @@ function postJobApp(jobApplication) {
     // .then(jobApp => listJobApps(jobApp))
 }
 
+function postTask(task) {
+    fetch(`http://localhost:3000/job_tasks`, {
+        method: 'POST',
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(task)
+    })
+    .then(res => res.json())
+    .then(console.log)
+    //.then(task => renderNewTasks(task))
+}
+
 // Left Pane 
 function listJobApps(job) {
     let jobUl = document.querySelector('.job-list') 
@@ -141,6 +154,8 @@ function showJobAndTaskPanel(job) {
 
     })
 
+    //have to create submit new task function for jobTaskBtn
+
     rightPane.append(taskUl)
 
 // Right Pane Render END
@@ -171,17 +186,28 @@ function showJobAndTaskPanel(job) {
     let companyNotes = document.createElement('p')
     companyNotes.textContent = `Notes: ${job.company_notes}`
 
-    let jobTaskBtn = document.createElement('button')
-    jobTaskBtn.className = "create-task-button"
-    jobTaskBtn.textContent = "Create Task"
+    let jobTaskForm = document.querySelector('.add-new-task-form')
+    let jobAppId = job.id
+    jobTaskForm.addEventListener('submit', (e) => {
+        handleTask(e, jobAppId)
+    })
     
-    //have to create submit new task function for jobTaskBtn
-
-    jobDiv.append(companyName, status, position, salary, requirements, companyNotes, jobTaskBtn)
+    jobDiv.append(companyName, status, position, salary, requirements, companyNotes, jobTaskForm)
 
     // Must fill out backend actions for create and edit in API model controllers before doing frontend methods for it
 
     showPanel.append(jobDiv)
+   
+}
+
+function handleTask(e, jobAppId) {
+    e.preventDefault()
+    let task = {
+        is_complete: false,
+        task: e.target.task.value,
+        job_application_id: jobAppId
+    }
+    postTask(task)
 }
 
 
