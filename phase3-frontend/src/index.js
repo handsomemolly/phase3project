@@ -232,6 +232,29 @@ function handleTask(e, jobAppId) {
     postTask(task)
 }
 
+
+
+function renderNewTasks(task) {
+    
+    let newTaskOl = document.querySelector('.tasks-list')
+    let newTaskLi = document.createElement('li') 
+    newTaskLi.textContent = task.task 
+    newTaskLi.id = task.id
+
+    let newCompleteBtn = document.createElement('button')
+    newCompleteBtn.textContent = 'complete'
+    newCompleteBtn.className = "complete-button"
+    newCompleteBtn.style = "margin-left: 8px"
+
+    newTaskLi.append(newCompleteBtn)
+    newTaskOl.append(newTaskLi)
+
+    let taskPane = document.querySelector('.rightpane')
+    taskPane.append(newTaskOl)
+
+    newCompleteBtn.addEventListener('click', () => completeTask(task))
+}
+
 // JS for header animation
 var textWrapper = document.querySelector('.ml14 .letters');
 textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
@@ -260,24 +283,3 @@ anime.timeline({loop: true})
     easing: "easeOutExpo",
     delay: 1000
   });
-
-function renderNewTasks(task) {
-    
-    let newTaskOl = document.querySelector('.tasks-list')
-    let newTaskLi = document.createElement('li') 
-    newTaskLi.textContent = task.task 
-    newTaskLi.id = task.id
-
-    let newCompleteBtn = document.createElement('button')
-    newCompleteBtn.textContent = 'complete'
-    newCompleteBtn.className = "complete-button"
-    newCompleteBtn.style = "margin-left: 8px"
-
-    newTaskLi.append(newCompleteBtn)
-    newTaskOl.append(newTaskLi)
-
-    let taskPane = document.querySelector('.rightpane')
-    taskPane.append(newTaskOl)
-
-    newCompleteBtn.addEventListener('click', () => completeTask(task))
-}
