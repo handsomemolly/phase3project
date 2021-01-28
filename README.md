@@ -1,29 +1,25 @@
 # README
 # Job Application Organizer
 # Goal:
-    The goal of our application is to create a platform for everyday chefs ot showcase their unique recipes. A user would be able to post a drink or food recipe and recieve feedback from other users on each individual post. Food and Drink is perfect for hobbyists, enthusiasts, or even the regular person looking for some inspiration.
+    The goal of our application is to log and organize current job applications and associated tasks that you're working on as you enter the software engineering job market. Applying to jobs can be a hectic time with a lot of moving pieces. With our app, you can keep track of those pieces as you work through the process of landing your first job!
 # Symbols throughout the README:
-    1. "" ==> What is displayed in the application terminal
-    2. '' ==> What to type into the terminal (excluding the '')
+    1. '' ==> What to type into the terminal (excluding the '') or what to select with your cursor (i.e. click 'save')
 # Prerequisites and installation guide to get started:
-    1. Please have the latest version of Ruby and an environment such Visual Studio.
+    1. Please have the latest version of Ruby and an environment such as Visual Studio.
     2. Fork and clone down a copy of this repository into your local machine.
     3. Ensure that all gems have been installed and updated correctly. This will be done for you by running 'bundle install' and 'bundle update' in the terminal.
     4. Run 'rails db:migrate' once to create a database for storage.
-    5. Run 'rails s' afterwards to start the server and head over to localhost:3000 in the broswer url bar.
-# As a user of our application, a user can do a few things:
-    1. Create a chef profile and account. (account is not neccessary to view posts).
-    2. View food and drink recipes.
-    3. If signed in, can access personal profile page, create recipes, like posts, and comment on posts.
-    4. Update or delete any existing posts.
-    5. Be showcased on the homepage if their recipes get a lot of traction.
+    5. Run 'rails db:seed' to populate the database with some data to get started.
+    6. Run 'rails s' afterwards to start the server and open the 'index.html' file to view the application.
+# As a user of our application, you can do a few things:
+    1. Log a recently submitted job application with position, salary info, job requirements, and any notes about the company.
+    2. View job applications that are already logged and edit/delete them when necessary.
+    3. Log and complete tasks associated with a job application as you move through the interview process.
 # How to use our application:
-    1. To start the application, type into the terminal 'rails s', and go to 'localhostt:3000' within the webrowser.
-    2. The navbar at top will contain a few tabs that are always accessible. To create an account, please click on the login button to the right and follow tthe prompts of creating your personal account.
-    3. Once an account has been successfully created, you can choose to create recipe posts for either foods or drinks. Simply click on the create new food/drink buttons to create a new recipe and fill out the corressponding forms.
-    4. Comments and likes can be committed on each individual post page. As an example, viewing your own or someone elses recipe, the like and comment section are at the bottom. Note: you cn only like a post once.
-    5. The homepage will be contain many different links and tabs that you can explore. Your dish may be showcased here as well.
-    7. The food and drink index pages located on the navbar will list all available recipes. The all chefs tab to the right will also list all available chefs and the amount of recipes they currently authored.
-    8. Most of the user specific actions can be found within the profile page as well.
+    1. To start the application, type into the terminal 'rails s', and right click the 'index.html' file in VSCode and select 'Open in Default Browser'
+    2. In your browser, you'll see 3 panels from left to right: 1) Current applications in process 2) A Form to submit a new application into your organizer 3) A task panel
+    3. Upon clicking on an existing application in the left pane, full details of the job application will be visible in the middle pane.
+    4. Under the details of the application, there is an option to create a task such as "phone interview scheduled," which will then appear on the right pane.
+    5. As you move through the interview process, you can click the 'complete' button next to a task to check it off your list.
 # Closing Notes:
-    -We used polymorphic relational assocations between our models to get the functionality of our application to work the way we intended. Having never used it before, it was interesting to see how it worked and how to implement it into our program models.
+    - This app was created using a Rails back end and a JavaScript/HTML/CSS front end.
