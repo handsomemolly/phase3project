@@ -2,7 +2,7 @@ body, html {
     width: 100%;
     height: 100%;
     margin: 0;
-    background-image: url("https://static01.nyt.com/images/2018/05/03/us/03spongebob_xp/03spongebob_xp-videoSixteenByNineJumbo1600.jpg")
+    background-image: url("https://wallpaper-house.com/data/out/6/wallpaper2you_100823.jpg")
   }
   
   .container {
@@ -15,15 +15,16 @@ body, html {
     margin: 10px auto;
     position: relative;
     text-align:center;
+    font-family: Helvetica
   }
 
   .leftpane {
     width: 25%;
     height: 100%;
     flex: 1;
-    border: 2px solid yellow;
+    border: 2px solid rgb(247, 247, 247);
     margin-right: 20px;
-    background-color: rosybrown;
+    background-color: rgb(66, 92, 60);
     border-collapse: collapse;
     border-radius: 10px;
   }
@@ -32,9 +33,9 @@ body, html {
     width: 50%;
     height: 100%;
     flex: 1;
-    border: 2px solid yellow;
+    border: 2px solid rgb(255, 255, 255);
     margin-right: 20px;
-    background-color: royalblue;
+    background-color: rgb(104, 103, 103);
     border-collapse: collapse;
     border-radius: 10px;
   }
@@ -43,9 +44,9 @@ body, html {
     width: 25%;
     height: 100%;
     flex: 1;
-    border: 2px solid yellow;
+    border: 2px solid rgb(255, 255, 255);
     position: relative;
-    background-color: purple;
+    background-color: rgb(43, 46, 82);
     border-collapse: collapse;
     border-radius: 10px;
     text-align:left;
@@ -57,7 +58,7 @@ body, html {
     margin-bottom: 20px;
     margin-top: 20px;
     border-collapse: collapse;
-    background-color: #4da6ff;
+    background-color: #e2e0e0;
     border-radius: 10px;
     text-align:center;
   }
@@ -157,6 +158,36 @@ body, html {
 
   .submit:hover {
     background-color: green;
+  }
+
+/* header animation */
+  .ml14 {
+    font-weight: 300;
+    font-size: 2.2em;
+  }
+  
+  .ml14 .text-wrapper {
+    position: relative;
+    display: inline-block;
+    padding-top: 0.1em;
+    padding-right: 0.05em;
+    padding-bottom: 0.25em;
+  }
+  
+  .ml14 .line {
+    opacity: 0;
+    position: absolute;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background-color: #fff;
+    transform-origin: 100% 100%;
+    bottom: 0;
+  }
+  
+  .ml14 .letter {
+    display: inline-block;
+    line-height: 1em;
   }
 
   
