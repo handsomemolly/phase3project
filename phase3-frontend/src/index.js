@@ -122,7 +122,7 @@ function handleSubmit(e) {
         company_notes: e.target.note.value,
         company_name: e.target.company_name.value,
         user_id: 17
-        // VERY IMPORTANT! ONCE APP IS COMPLETE, RE-SEED DATA AND CHANGE THE USER_ID ON LINE 125 TO AN EXISTING ONE
+        // VERY IMPORTANT! ONCE APP IS COMPLETE, RE-SEED DATA AND CHANGE THE USER_ID ON LINE 124 TO AN EXISTING ONE
     }
 
     postJobApp(jobApplication)
