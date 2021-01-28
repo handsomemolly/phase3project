@@ -235,7 +235,6 @@ function handleTask(e, jobAppId) {
 
 
 function renderNewTasks(task) {
-    
     let newTaskOl = document.querySelector('.tasks-list')
     let newTaskLi = document.createElement('li') 
     newTaskLi.textContent = task.task 
