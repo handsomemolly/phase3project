@@ -37,6 +37,7 @@ function completeTask(task) {
         body: JSON.stringify({is_complete: task.is_complete})
     })
     .then(res => res.json())
+    .then(console.log())
     .then(task => {
         let li = document.getElementById(`${task.job_task_id}`)
         li.textContent = `${task.task}`
@@ -53,7 +54,6 @@ function postJobApp(jobApplication) {
         body: JSON.stringify(jobApplication)
     })
     .then(resp => resp.json())
-    // function beneath works as intended. Figure out how to save to database
     .then(jobApp => listJobApps(jobApp))
 }
 
@@ -66,8 +66,7 @@ function postTask(task) {
         body: JSON.stringify(task)
     })
     .then(res => res.json())
-    .then(console.log)
-    //.then(task => renderNewTasks(task))
+    .then(task => renderNewTasks(task))
 }
 
 // Left Pane 
@@ -110,7 +109,6 @@ function newJobApp() {
 
     let form = formContainer.querySelector('.add-new-job-form')
     form.addEventListener('submit', handleSubmit)
-    
 }
 
 function handleSubmit(e) {
@@ -123,12 +121,13 @@ function handleSubmit(e) {
         requirements: e.target.requirement.value,
         company_notes: e.target.note.value,
         company_name: e.target.company_name.value,
-        user_id: 13
-        // VERY IMPORTANT! ONCE APP IS COMPLETE, RE-SEED DATA AND CHANGE THE USER_ID ON LINE 122 TO AN EXISTING ONE
+        user_id: 17
+        // VERY IMPORTANT! ONCE APP IS COMPLETE, RE-SEED DATA AND CHANGE THE USER_ID ON LINE 124 TO AN EXISTING ONE
     }
 
     postJobApp(jobApplication)
 }
+
 
 // Middle and Right Panes
 function showJobAndTaskPanel(job) {
@@ -158,15 +157,12 @@ function showJobAndTaskPanel(job) {
         }
 
     })
-
-    //have to create submit new task function for jobTaskBtn
-
     rightPane.append(taskOl)
 
-// Right Pane Render END
+    // Right Pane Render END
 
 
-// Middle Pane Render BEGIN
+    // Middle Pane Render BEGIN
     let jobForm = document.querySelector('.form-container')
     jobForm.style.display = "none"
 
@@ -265,5 +261,23 @@ anime.timeline({loop: true})
     delay: 1000
   });
 
+function renderNewTasks(task) {
+    
+    let newTaskOl = document.querySelector('.tasks-list')
+    let newTaskLi = document.createElement('li') 
+    newTaskLi.textContent = task.task 
+    newTaskLi.id = task.id
 
+    let newCompleteBtn = document.createElement('button')
+    newCompleteBtn.textContent = 'complete'
+    newCompleteBtn.className = "complete-button"
+    newCompleteBtn.style = "margin-left: 8px"
 
+    newTaskLi.append(newCompleteBtn)
+    newTaskOl.append(newTaskLi)
+
+    let taskPane = document.querySelector('.rightpane')
+    taskPane.append(newTaskOl)
+
+    newCompleteBtn.addEventListener('click', () => completeTask(task))
+}
