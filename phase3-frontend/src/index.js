@@ -23,6 +23,8 @@ function deleteApp(job){
     .then(res => res.json())
     .then(() => {
         let jobApp = document.getElementById(`job-app-${job.id}`)
+        let breaks = document.querySelector(`.br-${job.id}`)
+        breaks.remove()
         jobApp.remove()
     })
 }
@@ -76,6 +78,7 @@ function listJobApps(job) {
     jobLi.id = `job-app-${job.id}`
 
     let lineBreak = document.createElement('br')
+    lineBreak.className = `br-${job.id}`
 
     let deleteBtn = document.createElement('button')
     deleteBtn.className = "delete-button"
@@ -231,7 +234,6 @@ function handleTask(e, jobAppId) {
     }
     postTask(task)
 }
-
 
 
 function renderNewTasks(task) {
